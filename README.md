@@ -1,5 +1,4 @@
 ```mermaid
-# paypay
 sequenceDiagram
     participant User as ユーザー
     participant FuelDispenser as 給油機
