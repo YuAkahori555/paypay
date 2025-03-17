@@ -16,6 +16,7 @@ sequenceDiagram
     alt 決済リクエスト受理エラー
         PayPay-->>MerchantSystem: 決済リクエスト受理不可（エラー通知）
         MerchantSystem->>User: 決済エラーメッセージ表示
+        User->>MerchantSystem: 別の決済方法を選択
     else
         PayPay->>Backend: 決済リクエスト
         Backend->>PayPay: 決済確認
