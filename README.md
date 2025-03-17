@@ -5,6 +5,7 @@ sequenceDiagram
     participant MerchantSystem as 加盟店システム
     participant PayPay as PayPay決済システム
     participant Backend as 支払い確認システム
+    participant POS as POSシステム
 
     User->>FuelDispenser: 決済方法選択（PayPay）
     FuelDispenser->>MerchantSystem: PayPay決済リクエスト
@@ -13,6 +14,7 @@ sequenceDiagram
     MerchantSystem-->>FuelDispenser: QRコード表示
     User->>PayPay: PayPayアプリでQRコードスキャン & 支払い実行
     PayPay->>MerchantSystem: 決済通知（成功/失敗）
+
     alt 決済成功
         MerchantSystem->>FuelDispenser: 給油許可
         User->>FuelDispenser: 給油開始
@@ -20,8 +22,9 @@ sequenceDiagram
         MerchantSystem->>PayPay: 最終決済確定（給油量分）
         PayPay->>Backend: 支払い完了通知
         Backend-->>MerchantSystem: 支払い確認完了
+        MerchantSystem->>POS: 売上登録
     else 決済失敗
-        MerchantSystem->>FuelDispenser: 給油不可通知
+        MerchantSystem->>FuelDispenser: 決済エラー通知（給油不可）
         FuelDispenser->>User: 決済エラー表示
     end
 
