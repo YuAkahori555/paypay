@@ -1,3 +1,4 @@
+```mermaid
 # paypay
 sequenceDiagram
     participant User as ユーザー
