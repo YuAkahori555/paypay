@@ -12,11 +12,11 @@ sequenceDiagram
     MerchantSystem->>User: QRコード表示
 
     User->>PayPay: QRコードスキャン & 支払い実行
+    PayPay->>Backend: 決済リクエスト
 
     alt 決済成功
-        PayPay-->>User: 決済成功通知   
-        PayPay->>Backend: 決済リクエスト
         Backend->>PayPay: 決済確認
+        PayPay-->>Backend: 決済成功通知
         Backend->>MerchantSystem: 決済成功通知
         MerchantSystem->>User: 決済成功メッセージ表示
         MerchantSystem->>FuelDispenser: 給油許可
@@ -26,6 +26,7 @@ sequenceDiagram
             FuelDispenser->>MerchantSystem: 給油完了通知
         end
     else 決済失敗
-        PayPay-->>User: 決済失敗通知
+        PayPay-->>Backend: 決済失敗通知
+        Backend->>MerchantSystem: 決済失敗通知
         MerchantSystem->>User: 決済失敗メッセージ表示
     end
