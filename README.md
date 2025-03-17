@@ -6,6 +6,7 @@ sequenceDiagram
     participant PayPay as PayPay決済システム
     participant Backend as 支払い確認システム
 
+    MerchantSystem->>User: 決済方法選択画面を表示
     User->>MerchantSystem: 決済方法選択（PayPay）
     MerchantSystem->>PayPay: QRコード生成リクエスト
     PayPay-->>MerchantSystem: QRコード発行
