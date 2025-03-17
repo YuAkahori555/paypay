@@ -23,8 +23,9 @@ sequenceDiagram
         PayPay->>MerchantSystem: 決済成功通知
         MerchantSystem->>User: 決済成功メッセージ表示
         MerchantSystem->>FuelDispenser: 給油許可
-        
+
         opt ユーザーが給油を実施
             User->>FuelDispenser: 給油開始
             FuelDispenser->>MerchantSystem: 給油完了通知
+        end
     end
