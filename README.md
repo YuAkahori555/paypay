@@ -12,7 +12,6 @@ sequenceDiagram
     MerchantSystem->>User: QRコード表示
 
     User->>PayPay: QRコードスキャン & 支払い実行
-    MerchantSystem->>PayPay: 決済リクエスト
 
     alt 決済リクエスト受理エラー
         PayPay-->>MerchantSystem: 決済リクエスト受理不可（エラー通知）
@@ -20,6 +19,7 @@ sequenceDiagram
     else
         PayPay->>Backend: 決済リクエスト
         Backend->>PayPay: 決済確認
+        PayPay-->>Backend: 決済結果通知
 
         alt 決済成功
             Backend-->>PayPay: 決済成功判定
