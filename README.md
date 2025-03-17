@@ -27,7 +27,5 @@ sequenceDiagram
         end
     else 決済失敗
         PayPay-->>User: 決済失敗通知
-        Backend->>MerchantSystem: 決済失敗通知
-        PayPay->>User: 決済失敗通知
         MerchantSystem->>User: 決済失敗メッセージ表示
     end
