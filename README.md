@@ -19,8 +19,6 @@ sequenceDiagram
         User->>MerchantSystem: 別の決済方法を選択
     else
         PayPay->>Backend: 決済リクエスト
-        Backend->>PayPay: 決済確認
-        PayPay-->>Backend: 決済結果通知
 
         alt 決済成功
             Backend-->>PayPay: 決済成功判定
