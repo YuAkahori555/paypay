@@ -3,7 +3,7 @@ sequenceDiagram
     participant User as ユーザー
     participant FuelDispenser as 給油機
     participant MerchantSystem as 加盟店システム
-    participant PayPay as PayPay決済システム
+    participant PayPay as PayPay
     participant Backend as 決済システム
 
     User->>MerchantSystem: 決済方法選択（PayPay）
