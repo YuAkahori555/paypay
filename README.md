@@ -13,7 +13,7 @@ sequenceDiagram
     User->>PayPay: QRコードスキャン & 支払い実行
     PayPay->>Backend: 決済リクエスト
     Backend->>PayPay: 決済確認
-    PayPay-->>Backend: 決済結果通知
+    PayPay-->>Backend: 決済成功 or 決済失敗 通知
 
     alt 決済成功
         Backend->>MerchantSystem: 決済成功通知
@@ -23,7 +23,7 @@ sequenceDiagram
     else 決済失敗
         Backend->>MerchantSystem: 決済失敗通知
         MerchantSystem->>User: 決済失敗通知
-        MerchantSystem->>FuelDispenser: 給油不可通知
     end
+
 
 
