@@ -4,7 +4,7 @@ sequenceDiagram
     participant FuelDispenser as 給油機
     participant MerchantSystem as 加盟店システム
     participant PayPay as PayPay決済システム
-    participant Backend as 支払い確認システム
+    participant Backend as 決済システム
 
     User->>MerchantSystem: 決済方法選択（PayPay）
     MerchantSystem->>PayPay: QRコード生成リクエスト
