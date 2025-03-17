@@ -14,9 +14,16 @@ sequenceDiagram
     PayPay->>Backend: 決済リクエスト
     Backend->>PayPay: 決済確認
     PayPay-->>Backend: 決済結果通知
-    Backend->>MerchantSystem: 決済成功通知
-    MerchantSystem->>FuelDispenser: 給油許可
-    User->>FuelDispenser: 給油開始
-    FuelDispenser->>MerchantSystem: 給油完了通知
+
+    alt 決済成功
+        Backend->>MerchantSystem: 決済成功通知
+        MerchantSystem->>FuelDispenser: 給油許可
+        User->>FuelDispenser: 給油開始
+        FuelDispenser->>MerchantSystem: 給油完了通知
+    else 決済失敗
+        Backend->>MerchantSystem: 決済失敗通知
+        MerchantSystem->>User: 決済失敗通知
+        MerchantSystem->>FuelDispenser: 給油不可通知
+    end
 
 
