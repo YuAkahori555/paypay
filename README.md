@@ -26,6 +26,8 @@ sequenceDiagram
             FuelDispenser->>MerchantSystem: 給油完了通知
         end
     else 決済失敗
+        PayPay->>Backend: 決済エラーチェック
+        Backend-->>PayPay: 決済失敗判定
         PayPay-->>Backend: 決済失敗通知
         Backend->>MerchantSystem: 決済失敗通知
         MerchantSystem->>User: 決済失敗メッセージ表示
